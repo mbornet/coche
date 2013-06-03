@@ -10,7 +10,7 @@ let pattern =
                exit 1
           end
      else
-          Str.regexp Sys.argv.(1);;
+          Str.regexp ("^" ^ Sys.argv.(1) ^ "[ \t:]") ;;
 
 let left_shift l = match l with
      | [] -> l
