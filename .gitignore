@@ -1,1 +1,4 @@
 ...git*
+*.cmo
+*.cmi
+grep_first
