@@ -40,9 +40,9 @@ let process_chan c =
      try while !ref_found = false
           do
                let v = process_line (input_line c) ref_found in v;
-               if !ref_found then printf "%s\n" v;
+               if !ref_found then v;
           done ;
-     with End_of_file -> () ;;
+     with End_of_file -> "" ;;
 
 let process_file f =
      let c = open_in f in process_chan c; close_in c;;
