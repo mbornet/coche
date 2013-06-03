@@ -5,14 +5,12 @@ OCAML_OPTS          =
 
 LIBS_CMA            = str.cma
 
-OBJETS              = disp_list.cmo
+OBJETS              = get_param_value.cmo
 
-INTERFACES          = disp_list.cmi
+INTERFACES          = get_param_value.cmi
 
-PROGS               = str_split              \
-                      string_after           \
-                      param_str_value        \
-                      param                  \
+PROGS               = grep_first             \
+                      get_param_value        \
                       mem_size
 
 ALL                 = $(OBJETS)              \
@@ -83,12 +81,12 @@ grep                : grep.cmo
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $<
 				@ echo
 
-grep_first.cmo      : grep_first.ml
+get_param_value.cmo : get_param_value.ml
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 				@ echo
 
-grep_first          : grep_first.cmo
+get_param_value     : get_param_value.cmo
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $<
 				@ echo
