@@ -5,17 +5,23 @@ OCAML_OPTS          =
 
 LIBS_CMA            = str.cma
 
-OBJETS              = get_param_value.cmo
+OBJETS              = get_param_value.cmo    \
+                      lists.cmo              \
+                      params.cmo
 
 INTERFACES          = get_param_value.cmi
 
 PROGS               = grep_first             \
                       get_param_value        \
-                      mem_size
+                      mem_size               \
+                      swap_size              \
+                      cpu_freq
 
-ALL                 = $(OBJETS)              \
-                      $(INTERFACES)          \
+ALL                 = $(INTERFACES)          \
                       $(PROGS)
+
+OBJS                = lists.cmo              \
+                      params.cmo
 
 #============================================================================
 
@@ -27,7 +33,7 @@ grep_first.cmo      : grep_first.ml
 
 grep_first          : grep_first.cmo
 				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $<
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
 get_param_value.cmo : get_param_value.ml
 				@ echo "$@"
@@ -35,13 +41,37 @@ get_param_value.cmo : get_param_value.ml
 
 get_param_value     : get_param_value.cmo
 				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $<
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
-mem_size.cmo        : mem_size.ml
+lists.cmo           : lists.ml
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
-mem_size            : mem_size.cmo
+params.cmo          : params.ml
 				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $<
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+mem_size.cmo        : mem_size.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+mem_size            : mem_size.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+swap_size.cmo       : swap_size.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+swap_size           : swap_size.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+cpu_freq.cmo        : cpu_freq.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+cpu_freq            : cpu_freq.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
