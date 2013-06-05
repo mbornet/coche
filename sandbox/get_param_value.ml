@@ -36,7 +36,7 @@ let with_file file fct =
                 close_in chan; res
           with e -> close_in chan; raise e
      else begin
-          eprintf "File \"%s\" not found!" file;
+          eprintf "File \"%s\" not found !\n" file;
           exit 1
      end ;;
 
