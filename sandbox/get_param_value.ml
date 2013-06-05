@@ -1,6 +1,5 @@
 
 open Printf ;;
-open Sys ;;
 
 let pattern =
      if Array.length Sys.argv != 3 then
