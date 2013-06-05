@@ -1,6 +1,5 @@
 
 OCAMLC              = ocamlc
-#OCAML_OPTS         = -g -i
 OCAML_OPTS          = 
 
 LIBS_CMA            = str.cma
@@ -17,8 +16,7 @@ PROGS               = grep_first             \
                       swap_size              \
                       cpu_freq
 
-ALL                 = $(INTERFACES)          \
-                      $(PROGS)
+ALL                 = $(PROGS)
 
 OBJS                = lists.cmo              \
                       params.cmo
