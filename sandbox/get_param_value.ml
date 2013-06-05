@@ -1,6 +1,5 @@
 
 open Printf ;;
-open Str ;;
 open Sys ;;
 
 let pattern =
@@ -46,38 +45,14 @@ let process_line l ref_found =
      try let _ = Str.search_forward pattern l 0 in
           begin
                ref_found   := true ;
-               let parts    = Str.split (regexp ":") l in
+               let parts    = Str.split (Str.regexp ":") l in
                let values   = left_shift parts in
                let value    = get_first values in
-               let qty      = Str.split (regexp "[ \t]+") value in
+               let qty      = Str.split (Str.regexp "[ \t]+") value in
                let mem_size = get_first qty in
                mem_size;
           end
      with Not_found -> "" ;;
-
-(*
-let process_chan c =
-     let ref_found = ref false in
-     try while !ref_found = false
-          do
-               let v = process_line (input_line c) ref_found in v;
-               if !ref_found then v;
-          done ;
-     with End_of_file -> "" ;;
-
-let process_file f =
-     let c = open_in f in process_chan c; close_in c;;
-
-let get_param_value name file =
-     process_file file ;;
-
-let () =
-     if Array.length Sys.argv  = 3 then
-          process_file Sys.argv.(2)
-     else
-          print_endline "(2) Usage : get_param_value name file" ;
-          exit 1 ;;
-*)
 
 let () =
      if Array.length Sys.argv  = 3 then
