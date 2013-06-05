@@ -18,9 +18,29 @@ let left_shift l = match l with
 
 let get_first l = match l with
      | [] -> ""
-     | head::tail ->head ;;
+     | head::tail -> head ;;
 
 let ref_found = ref false ;;
+
+let rec search_param chan =
+     try
+          let line = input_line chan in
+          try let _ = Str.search_forward pattern line 0 in
+               line
+          with Not_found -> search_param chan
+     with End_of_file -> "" ;;
+
+let with_file file fct =
+     if Sys.file_exists file then
+          let chan = open_in file in
+          try
+                let res = fct chan in
+                close_in chan; res
+          with e -> close_in chan; raise e
+     else begin
+          eprintf "File \"%s\" not found!" file;
+          exit 1
+     end ;;
 
 let process_line l ref_found =
      try let _ = Str.search_forward pattern l 0 in
@@ -35,6 +55,7 @@ let process_line l ref_found =
           end
      with Not_found -> "" ;;
 
+(*
 let process_chan c =
      let ref_found = ref false in
      try while !ref_found = false
@@ -53,6 +74,17 @@ let get_param_value name file =
 let () =
      if Array.length Sys.argv  = 3 then
           process_file Sys.argv.(2)
+     else
+          print_endline "(2) Usage : get_param_value name file" ;
+          exit 1 ;;
+*)
+
+let () =
+     if Array.length Sys.argv  = 3 then
+          begin
+               let pvalue = with_file Sys.argv.(2) search_param
+               in printf "pvalue = %s\n" pvalue
+          end
      else
           print_endline "(2) Usage : get_param_value name file" ;
           exit 1 ;;
