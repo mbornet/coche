@@ -18,13 +18,19 @@ let get_first l = match l with
      | [] -> ""
      | head::tail -> head ;;
 
-let ref_found = ref false ;;
+let extract_value l =
+          let parts       = Str.split (Str.regexp ":") l in
+          let values      = left_shift parts in
+          let value       = get_first values in
+          let qty         = Str.split (Str.regexp "[ \t]+") value in
+          let param_value = get_first qty in
+          param_value;;
 
 let rec search_param chan =
      try
           let line = input_line chan in
           try let _ = Str.search_forward pattern line 0 in
-               line
+               extract_value line
           with Not_found -> search_param chan
      with End_of_file -> "" ;;
 
