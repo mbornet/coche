@@ -29,7 +29,7 @@ grep_first.cmo      : grep_first.ml
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
-grep_first          : grep_first.cmo
+grep_first          : grep_first.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
@@ -37,7 +37,7 @@ get_param_value.cmo : get_param_value.ml
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
-get_param_value     : get_param_value.cmo
+get_param_value     : get_param_value.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
