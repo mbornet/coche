@@ -19,7 +19,7 @@ let extract_value l =
           let param_value = Lists.get_first qty in
           param_value;;
 
-(* Search the parameter in the file associated to "chan" an return its value *)
+(* Search for the parameter in the file associated to "chan" an return its value *)
 let rec search_param chan =
      try
           let line = input_line chan in
