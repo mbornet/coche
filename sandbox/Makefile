@@ -29,7 +29,7 @@ clean               :
 				@ rm -f *.cmo *.cmi
 				@ rm -f $(PROGS)
 
-grep_first.cmo      : grep_first.ml
+grep_first.cmo      : grep_first.ml $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
