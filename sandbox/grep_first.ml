@@ -1,7 +1,5 @@
 
 open Printf ;;
-open Str ;;
-open Sys ;;
 
 let pattern =
      if Array.length Sys.argv < 2 then
@@ -12,23 +10,14 @@ let pattern =
      else
           Str.regexp ("^" ^ Sys.argv.(1) ^ "[ \t:]") ;;
 
-let left_shift l = match l with
-     | [] -> l
-     | head::tail -> tail ;;
-
-let get_first l = match l with
-     | [] -> ""
-     | head::tail ->head ;;
-
 let process_line l =
      try let _ = Str.search_forward pattern l 0 in
           begin
-               (*print_endline l ; *)
-               let parts       = Str.split (regexp ":") l in
-               let values      = left_shift parts in
-               let value       = get_first values in
-               let qty         = Str.split (regexp " +") value in
-               let param_val   = get_first qty in
+               let parts       = Str.split (Str.regexp ":") l in
+               let values      = Lists.left_shift parts in
+               let value       = Lists.get_first values in
+               let qty         = Str.split (Str.regexp " +") value in
+               let param_val   = Lists.get_first qty in
                print_endline param_val ;
                exit 0 ;
           end
