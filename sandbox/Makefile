@@ -25,6 +25,10 @@ OBJS                = lists.cmo              \
 
 all                 : $(ALL)
 
+clean               :
+				@ rm -f *.cmo *.cmi
+				@ rm -f $(PROGS)
+
 grep_first.cmo      : grep_first.ml
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
