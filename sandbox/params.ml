@@ -21,6 +21,14 @@ let rec search_param chan regcomp =
           with Not_found -> search_param chan regcomp
      with End_of_file -> "" ;;
 
+let rec count_param chan regcomp =
+     try
+          let line = input_line chan in
+          try let _ = Str.search_forward regcomp line 0 in
+               1 + count_param chan regcomp
+          with Not_found -> count_param chan regcomp
+     with End_of_file -> 0 ;;
+
 (* Run "fct" on "file" *)
 let with_file file fct regcomp =
      if Sys.file_exists file then
@@ -37,3 +45,7 @@ let with_file file fct regcomp =
 let extract param_name file =
      let regcomp = Str.regexp ("^" ^ param_name ^ "[ \t:]") in
           with_file file search_param regcomp ;;
+
+let count param_name file =
+     let regcomp = Str.regexp ("^" ^ param_name ^ "[ \t:]") in
+          with_file file count_param regcomp ;;

@@ -14,7 +14,8 @@ PROGS               = grep_first             \
                       get_param_value        \
                       mem_size               \
                       swap_size              \
-                      cpu_freq
+                      cpu_freq               \
+                      hyperthreading
 
 ALL                 = $(PROGS)
 
@@ -74,6 +75,14 @@ cpu_freq.cmo        : cpu_freq.ml $(OBJS)
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
 cpu_freq            : cpu_freq.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+hyperthreading.cmo  : hyperthreading.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+hyperthreading      : hyperthreading.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
