@@ -30,36 +30,18 @@ let rec count_param_chan chan regcomp =
           with Not_found -> count_param_chan chan regcomp
      with End_of_file -> 0 ;;
 
-(*
-let count_uniq_chan chan regcomp = 
-     let h = Hashtbl.create 16 in
-     let n = while true
-     do
-     try
-          let line = input_line chan in
+let rec store chan regcomp ref_h =
+     try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
-               Hashtbl.add h line true ;
-               printf "line = [%s] nb elts = %d\n" line (Hashtbl.length h) ;
-          with Not_found -> 0 ;
-     with End_of_file -> Hashtbl.length h ;
-     done ;
-     Hashtbl.length h;;
-*)
-
-let rec toto chan regcomp ref_h =
-     try
-          let line = input_line chan in
-          try let _ = Str.search_forward regcomp line 0 in
-               try let _ = Hashtbl.find !ref_h line;
-               with Not_found -> Hashtbl.add !ref_h line true ;
-                    printf "line = [%s] nb elts = %d\n" line (Hashtbl.length !ref_h) ;
-                    toto chan regcomp ref_h;
-          with Not_found -> toto chan regcomp ref_h ;
+               Hashtbl.replace !ref_h line true;
+               printf "line = [%s] nb elts = %d\n" line (Hashtbl.length !ref_h) ;
+               store chan regcomp ref_h;
+          with Not_found -> store chan regcomp ref_h ;
      with End_of_file -> Hashtbl.length !ref_h ;;
 
 let count_uniq_chan chan regcomp =
      let h = Hashtbl.create 16 in
-          toto chan regcomp (ref h) ;;
+          store chan regcomp (ref h) ;;
 
 (* Run "fct" on "file" *)
 let with_file file fct regcomp =
