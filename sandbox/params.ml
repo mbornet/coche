@@ -5,12 +5,12 @@ let regcomp = Str.regexp "<VOID>"
 
 (* Extract the first field of the parameter value *)
 let extract_value l =
-          let parts       = Str.split (Str.regexp ":") l in
-          let values      = Lists.left_shift parts in
-          let value       = Lists.get_first values in
-          let qty         = Str.split (Str.regexp "[ \t]+") value in
-          let param_value = Lists.get_first qty in
-          param_value;;
+     let parts       = Str.split (Str.regexp ":") l in
+     let values      = Lists.left_shift parts in
+     let value       = Lists.get_first values in
+     let qty         = Str.split (Str.regexp "[ \t]+") value in
+     let param_value = Lists.get_first qty in
+     param_value
 
 (* Search for the parameter in the file associated to "chan" an return its value *)
 let rec search_param_chan chan regcomp =
