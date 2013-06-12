@@ -8,8 +8,8 @@ let param_virt_procs     = "processor" ;;
 let file_cpuinfo         = "/proc/cpuinfo" ;;
 
 let nb_cores_per_cpu     = int_of_string (Params.extract param_cores_per_cpu file_cpuinfo) ;;
-let nb_cpu_slots         = Params.count param_cpu_slots  file_cpuinfo ;;
-let nb_virt_procs        = Params.count param_virt_procs file_cpuinfo ;;
+let nb_cpu_slots         = Params.count_uniq param_cpu_slots  file_cpuinfo ;;
+let nb_virt_procs        = Params.count      param_virt_procs file_cpuinfo ;;
 
 printf "Nb cores per CPU      = %d\n" nb_cores_per_cpu ;;
 printf "Nb CPU slots          = %d\n" nb_cpu_slots ;;
