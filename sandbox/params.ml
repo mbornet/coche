@@ -34,7 +34,6 @@ let rec store chan regcomp ref_h =
      try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
                Hashtbl.replace !ref_h line true;
-               printf "line = [%s] nb elts = %d\n" line (Hashtbl.length !ref_h) ;
                store chan regcomp ref_h;
           with Not_found -> store chan regcomp ref_h ;
      with End_of_file -> Hashtbl.length !ref_h ;;
