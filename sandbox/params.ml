@@ -14,8 +14,7 @@ let extract_value l =
 
 (* Search for the parameter in the file associated to "chan" an return its value *)
 let rec search_param_chan chan regcomp =
-     try
-          let line = input_line chan in
+     try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
                extract_value line
           with Not_found -> search_param_chan chan regcomp
@@ -23,8 +22,7 @@ let rec search_param_chan chan regcomp =
 
 (* Count the number of occurences of the specified regular experience *)
 let rec count_param_chan chan regcomp =
-     try
-          let line = input_line chan in
+     try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
                1 + count_param_chan chan regcomp
           with Not_found -> count_param_chan chan regcomp
@@ -46,9 +44,8 @@ let count_uniq_chan chan regcomp =
 let with_file file fct regcomp =
      if Sys.file_exists file then
           let chan = open_in file in
-          try
-                let res = fct chan regcomp in
-                close_in chan; res
+          try let res = fct chan regcomp in
+               close_in chan; res
           with e -> close_in chan; raise e
      else begin
           eprintf "File \"%s\" not found !\n" file;
