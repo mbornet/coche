@@ -52,15 +52,17 @@ let with_file file fct regcomp =
           exit 1
      end
 
+let mk_re_param param_name = Str.regexp ("^" ^ param_name ^ "[ \t:]")
+
 let extract param_name file =
-     let regcomp = Str.regexp ("^" ^ param_name ^ "[ \t:]") in
+     let regcomp = mk_re_param param_name in
           with_file file search_param_chan regcomp
 
 let count param_name file =
-     let regcomp = Str.regexp ("^" ^ param_name ^ "[ \t:]") in
+     let regcomp = mk_re_param param_name in
           with_file file count_param_chan regcomp
 
 let count_uniq param_name file =
-     let regcomp = Str.regexp ("^" ^ param_name ^ "[ \t:]") in
+     let regcomp = mk_re_param param_name in
           with_file file count_uniq_chan regcomp
      
