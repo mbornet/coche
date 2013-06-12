@@ -28,17 +28,17 @@ let rec count_param_chan chan regcomp =
           with Not_found -> count_param_chan chan regcomp
      with End_of_file -> 0
 
-let rec store chan regcomp ref_h =
+let rec store_uniq chan regcomp ref_h =
      try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
                Hashtbl.replace !ref_h line true;
-               store chan regcomp ref_h;
-          with Not_found -> store chan regcomp ref_h ;
+               store_uniq chan regcomp ref_h;
+          with Not_found -> store_uniq chan regcomp ref_h ;
      with End_of_file -> Hashtbl.length !ref_h
 
 let count_uniq_chan chan regcomp =
      let h = Hashtbl.create 16 in
-          store chan regcomp (ref h)
+          store_uniq chan regcomp (ref h)
 
 (* Run "fct" on "file" *)
 let with_file file fct regcomp =
