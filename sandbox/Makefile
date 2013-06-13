@@ -16,7 +16,8 @@ PROGS               = grep_first             \
                       swap_size              \
                       cpu_freq               \
                       hyperthreading         \
-                      virtual_cores
+                      virtual_cores          \
+                      phys_cores
 
 ALL                 = $(PROGS)
 
@@ -92,6 +93,14 @@ virtual_cores.cmo   : virtual_cores.ml $(OBJS)
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
 virtual_cores       : virtual_cores.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+phys_cores.cmo      : phys_cores.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+phys_cores          : phys_cores.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 

@@ -9,3 +9,4 @@ swap_size
 cpu_freq
 hyperthreading
 virtual_cores
+phys_cores
