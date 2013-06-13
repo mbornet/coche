@@ -8,3 +8,4 @@ mem_size
 swap_size
 cpu_freq
 hyperthreading
+virtual_cores
