@@ -10,3 +10,5 @@ cpu_freq
 hyperthreading
 virtual_cores
 phys_cores
+file_uid
+file_mode

@@ -2,7 +2,8 @@
 OCAMLC              = ocamlc
 OCAML_OPTS          = 
 
-LIBS_CMA            = str.cma
+LIBS_CMA            = str.cma                \
+                      unix.cma
 
 OBJETS              = get_param_value.cmo    \
                       lists.cmo              \
@@ -17,7 +18,9 @@ PROGS               = grep_first             \
                       cpu_freq               \
                       hyperthreading         \
                       virtual_cores          \
-                      phys_cores
+                      phys_cores             \
+                      file_uid               \
+                      file_mode
 
 ALL                 = $(PROGS)
 
@@ -101,6 +104,22 @@ phys_cores.cmo      : phys_cores.ml $(OBJS)
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
 phys_cores          : phys_cores.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+file_uid.cmo        : file_uid.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+file_uid            : file_uid.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+file_mode.cmo       : file_mode.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+file_mode           : file_mode.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
