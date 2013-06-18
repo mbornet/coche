@@ -1,0 +1,42 @@
+cluster version
+network name
+network mask
+class name
+class type
+area name
+area network
+area hosts
+area iprange
+netconfig name
+netconfig classes
+netconfig type (physical | virtual )  "physical" >
+device link
+device target
+device name
+device state (up | down ) "up">
+mount classes
+mount options
+mount name
+mount mountpoint
+mount device
+mount fstype
+mount size
+quota type (soft | hard ) "soft">
+quota target (user | group ) "user">
+quota size
+system name
+system type
+kernel version
+pkgs list
+hardware name
+memory swap
+memory ram
+disk device
+disk size
+cpu maxfreq
+cpu ncores
+file classes
+file owner
+file group
+file name
+file perms
