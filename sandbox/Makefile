@@ -20,6 +20,7 @@ PROGS               = grep_first             \
                       virtual_cores          \
                       phys_cores             \
                       file_uid               \
+                      file_gid               \
                       file_mode
 
 ALL                 = $(PROGS)
@@ -112,6 +113,14 @@ file_uid.cmo        : file_uid.ml $(OBJS)
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
 file_uid            : file_uid.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+file_gid.cmo        : file_gid.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+file_gid            : file_gid.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 

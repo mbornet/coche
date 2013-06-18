@@ -11,4 +11,5 @@ hyperthreading
 virtual_cores
 phys_cores
 file_uid
+file_gid
 file_mode
