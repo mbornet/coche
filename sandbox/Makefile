@@ -20,12 +20,12 @@ LIBS_CMA            = str.cma                \
 
 INTERFACES          = get_param_value.cmi
 
-PROGS               = grep_first             \
-                      get_param_value        \
-                      cpu_freq               \
+PROGS               = cpu_freq               \
                       file_gid               \
                       file_mode              \
                       file_uid               \
+                      get_param_value        \
+                      grep_first             \
                       hyperthreading         \
                       mem_size               \
                       phys_cores             \
