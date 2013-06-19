@@ -1,6 +1,15 @@
 #
 #    Makefile for "coche" checks
 #    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#============================================================================
+#
+#	Targets :
+#		all		: make all programs
+#		clean	: remove objects, interfaces and programs
+#		checks	: run some tests
+#
+#============================================================================
 
 #============================================================================
 %.cmo               : %.ml
@@ -44,8 +53,36 @@ OBJS                = lists.cmo              \
 all                 : $(ALL)
 
 clean               :
-				@ rm -f *.cmo *.cmi
-				@ rm -f $(PROGS)
+				@ rm -f *.cmo *.cmi $(PROGS)
+
+checks              : $(PROGS)
+				@ echo "================ CHECKS ================"
+				@ ./mem_size
+				@ ./swap_size
+				@ ./cpu_freq
+				@ ./hyperthreading
+				@ ./phys_cores
+				@ ./virtual_cores
+				@ ./file_uid
+				@ ./file_uid   /toto
+				@ ./file_uid   /etc
+				@ ./file_uid   /etc/hosts
+				@ ./file_gid 
+				@ ./file_gid   /toto
+				@ ./file_gid   /etc
+				@ ./file_gid   /etc/hosts
+				@ ./file_mode
+				@ ./file_mode  /toto
+				@ ./file_mode  /etc
+				@ ./file_mode  /etc/hosts
+				@ ./file_user
+				@ ./file_user  /toto
+				@ ./file_user  /etc
+				@ ./file_user  /etc/hosts
+				@ ./file_group 
+				@ ./file_group /toto
+				@ ./file_group /etc
+				@ ./file_group /etc/hosts
 
 params.cmo          : lists.cmo
 
