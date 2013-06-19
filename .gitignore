@@ -4,6 +4,7 @@
 *.swp
 cpu_freq
 file_gid
+file_group
 file_mode
 file_uid
 file_user
