@@ -22,8 +22,10 @@ INTERFACES          = get_param_value.cmi
 
 PROGS               = cpu_freq               \
                       file_gid               \
+                      file_group             \
                       file_mode              \
                       file_uid               \
+                      file_user              \
                       get_param_value        \
                       grep_first             \
                       hyperthreading         \
