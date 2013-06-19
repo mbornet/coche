@@ -1,42 +1,42 @@
-#    : cluster version
-#    : network name
-#    : network mask
-#    : class name
-#    : class type
-#    : area name
-#    : area network
-#    : area hosts
-#    : area iprange
-#    : netconfig name
-#    : netconfig classes
-#    : netconfig type (physical | virtual )  "physical" >
-#    : device link
-#    : device target
-#    : device name
-#    : device state (up | down ) "up">
-#    : mount classes
-#    : mount options
-#    : mount name
-#    : mount mountpoint
-#    : mount device
-#    : mount fstype
-#    : mount size
-#    : quota type (soft | hard ) "soft">
-#    : quota target (user | group ) "user">
-#    : quota size
-#    : system name
-#    : system type
-#    : kernel version
-#    : pkgs list
-#    : hardware name
-# OK : memory swap => swap_size
-# OK : memory ram  => mem_size
-#    : disk device
-#    : disk size
-#    : cpu maxfreq
+# !! : area hosts
+# !! : area iprange
+# !! : area name
+# !! : area network
+# !! : class name
+# !! : class type
+# !! : cluster version
+# !! : cpu maxfreq
 # OK : cpu ncores  => phys_cores, virtual_cores
-#    : file classes
-# OK : file owner  => file_user
+# !! : device link
+# !! : device name
+# !! : device state (up | down ) "up">
+# !! : device target
+# !! : disk device
+# !! : disk size
+# !! : file classes
+# !! : file name
 # OK : file group  => file_group
-#    : file name
+# OK : file owner  => file_user
 # OK : file perms  => file_mode
+# !! : hardware name
+# !! : kernel version
+# OK : memory ram  => mem_size
+# OK : memory swap => swap_size
+# !! : mount classes
+# !! : mount device
+# !! : mount fstype
+# !! : mount mountpoint
+# !! : mount name
+# !! : mount options
+# !! : mount size
+# !! : netconfig classes
+# !! : netconfig name
+# !! : netconfig type (physical | virtual )  "physical" >
+# !! : network mask
+# !! : network name
+# !! : pkgs list
+# !! : quota size
+# !! : quota target (user | group ) "user">
+# !! : quota type (soft | hard ) "soft">
+# !! : system name
+# !! : system type
