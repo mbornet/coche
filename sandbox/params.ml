@@ -40,6 +40,12 @@ let count_uniq_chan chan regcomp =
      let h = Hashtbl.create 16 in
           store_uniq chan regcomp (ref h)
 
+let get_field field_no line =
+     let regcomp = Str.regexp "[ ]" in
+     let fields  = Str.split regcomp line in
+     let result  = List.nth fields field_no in
+          result
+
 (* Run "fct" on "file" *)
 let with_file file fct regcomp =
      if Sys.file_exists file then
@@ -54,6 +60,11 @@ let with_file file fct regcomp =
           end
 
 let mk_re_param param_name = Str.regexp ("^" ^ param_name ^ "[ \t:]")
+
+(*
+let field field_no file =
+     with_file file get_field field_no
+*)
 
 let extract param_name file =
      let regcomp = mk_re_param param_name in

@@ -35,9 +35,11 @@ PROGS               = cpu_freq               \
                       file_mode              \
                       file_uid               \
                       file_user              \
+                      get_field              \
                       get_param_value        \
                       grep_first             \
                       hyperthreading         \
+                      kernel_version         \
                       mem_size               \
                       phys_cores             \
                       swap_size              \
@@ -83,6 +85,7 @@ checks              : $(PROGS)
 				@ ./file_group /toto
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
+				@ ./get_field
 
 params.cmo          : lists.cmo
 
@@ -95,7 +98,10 @@ file_user.cmo       : params.cmo
 get_param_value.cmo : params.cmo
 grep_first.cmo      : params.cmo
 hyperthreading.cmo  : params.cmo
+kernel_version.cmo  : params.cmo
 mem_size.cmo        : params.cmo
 phys_cores.cmo      : params.cmo
 swap_size.cmo       : params.cmo
 virtual_cores.cmo   : params.cmo
+
+get_field.cmo       : params.cmo
