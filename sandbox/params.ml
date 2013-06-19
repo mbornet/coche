@@ -47,10 +47,11 @@ let with_file file fct regcomp =
           try let res = fct chan regcomp in
                close_in chan; res
           with e -> close_in chan; raise e
-     else begin
-          eprintf "File \"%s\" not found !\n" file;
-          exit 1
-     end
+     else
+          begin
+               eprintf "File \"%s\" not found !\n" file;
+               exit 1
+          end
 
 let mk_re_param param_name = Str.regexp ("^" ^ param_name ^ "[ \t:]")
 
