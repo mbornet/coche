@@ -7,6 +7,10 @@
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
+%                   : %.cmo
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
 #============================================================================
 OCAMLC              = ocamlc
 OCAML_OPTS          = 
@@ -45,55 +49,44 @@ clean               :
 				@ rm -f *.cmo *.cmi
 				@ rm -f $(PROGS)
 
-grep_first          : grep_first.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+params.cmo          : lists.cmo
 
-get_param_value     : get_param_value.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+grep_first.cmo      : params.cmo
+grep_first          : grep_first.cmo
 
-mem_size            : mem_size.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+get_param_value.cmo : params.cmo
+get_param_value     : get_param_value.cmo
 
-swap_size           : swap_size.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+mem_size.cmo        : params.cmo
+mem_size            : mem_size.cmo
 
-cpu_freq            : cpu_freq.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+swap_size.cmo       : params.cmo
+swap_size           : swap_size.cmo
 
-hyperthreading      : hyperthreading.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+cpu_freq.cmo        : params.cmo
+cpu_freq            : cpu_freq.cmo
 
-virtual_cores       : virtual_cores.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+hyperthreading.cmo  : params.cmo
+hyperthreading      : hyperthreading.cmo
 
-phys_cores          : phys_cores.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+virtual_cores.cmo   : params.cmo
+virtual_cores       : virtual_cores.cmo
 
-file_uid            : file_uid.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+phys_cores.cmo      : params.cmo
+phys_cores          : phys_cores.cmo
 
-file_gid            : file_gid.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+file_uid.cmo        : params.cmo
+file_uid            : file_uid.cmo
 
-file_mode           : file_mode.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+file_gid            : params.cmo
+file_gid            : file_gid.cmo
 
-file_user           : file_user.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+file_mode.cmo       : params.cmo
+file_mode           : file_mode.cmo
 
-file_group          : file_group.cmo $(OBJS)
-				@ echo "$@"
-				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+file_user.cmo       : params.cmo
+file_user           : file_user.cmo
+
+file_group.cmo      : params.cmo
+file_group          : file_group.cmo
 
