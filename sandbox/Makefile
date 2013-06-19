@@ -132,3 +132,11 @@ file_mode           : file_mode.cmo $(OBJS)
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
+file_user.cmo       : file_user.ml $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+file_user           : file_user.cmo $(OBJS)
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
