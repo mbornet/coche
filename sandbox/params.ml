@@ -46,6 +46,11 @@ let get_field field_no line =
      let result  = List.nth fields field_no in
           result
 
+let get_field_chan chan field_no =
+     try let line = input_line chan in
+          get_field field_no line
+     with End_of_file -> ""
+
 (* Run "fct" on "file" *)
 let with_file file fct regcomp =
      if Sys.file_exists file then
@@ -61,11 +66,6 @@ let with_file file fct regcomp =
 
 let mk_re_param param_name = Str.regexp ("^" ^ param_name ^ "[ \t:]")
 
-(*
-let field field_no file =
-     with_file file get_field field_no
-*)
-
 let extract param_name file =
      let regcomp = mk_re_param param_name in
           with_file file search_param_chan regcomp
@@ -78,3 +78,6 @@ let count_uniq param_name file =
      let regcomp = mk_re_param param_name in
           with_file file count_uniq_chan regcomp
      
+let field field_no file =
+     with_file file get_field_chan field_no
+

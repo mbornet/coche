@@ -85,7 +85,7 @@ checks              : $(PROGS)
 				@ ./file_group /toto
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
-				@ ./get_field
+				@ ./kernel_version
 
 params.cmo          : lists.cmo
 
