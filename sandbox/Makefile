@@ -30,6 +30,7 @@ LIBS_CMA            = str.cma                \
 INTERFACES          = get_param_value.cmi
 
 PROGS               = cpu_freq               \
+                      cpu max_freq           \
                       file_gid               \
                       file_group             \
                       file_mode              \
