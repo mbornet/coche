@@ -3,6 +3,7 @@
 *.cmi
 *.swp
 cpu_freq
+cpu_max_freq
 file_gid
 file_group
 file_mode
