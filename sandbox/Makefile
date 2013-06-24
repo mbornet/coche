@@ -91,6 +91,7 @@ checks              : $(PROGS)
 params.cmo          : lists.cmo
 
 cpu_freq.cmo        : params.cmo
+cpu_max_freq        : params.cmo
 file_gid.cmo        : params.cmo
 file_group.cmo      : params.cmo
 file_mode.cmo       : params.cmo

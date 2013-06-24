@@ -12,12 +12,27 @@ let extract_value l =
      let param_value = Lists.get_first qty in
      param_value
 
+let extract_last_value l =
+     let parts       = Str.split (Str.regexp ":") l in
+     let values      = Lists.left_shift parts in
+     let value       = Lists.get_first values in
+     let qty         = Str.split (Str.regexp "[ \t]+") value in
+     let param_value = Lists.get_last qty in
+     param_value
+
 (* Search for the parameter in the file associated to "chan" an return its value *)
 let rec search_param_chan chan regcomp =
      try let line = input_line chan in
           try let _ = Str.search_forward regcomp line 0 in
                extract_value line
           with Not_found -> search_param_chan chan regcomp
+     with End_of_file -> ""
+
+let rec search_param_last_chan chan regcomp =
+     try let line = input_line chan in
+          try let _ = Str.search_forward regcomp line 0 in
+               extract_last_value line
+          with Not_found -> search_param_last_chan chan regcomp
      with End_of_file -> ""
 
 (* Count the number of occurences of the specified regular experience *)
@@ -80,4 +95,8 @@ let count_uniq param_name file =
      
 let field field_no file =
      with_file file get_field_chan field_no
+
+let last_field param_name file =
+     let regcomp = mk_re_param param_name in
+          with_file file search_param_last_chan regcomp
 
