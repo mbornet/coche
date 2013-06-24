@@ -19,7 +19,7 @@
 # OK : file owner  => file_user
 # OK : file perms  => file_mode
 # !! : hardware name
-# !! : kernel version
+# OK : kernel version => kernel_version
 # OK : memory ram  => mem_size
 # OK : memory swap => swap_size
 # !! : mount classes
