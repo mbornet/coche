@@ -5,7 +5,7 @@
 # !! : class name
 # !! : class type
 # !! : cluster version
-# !! : cpu maxfreq
+# OK : cpu maxfreq => cpu_max_freq
 # OK : cpu ncores  => phys_cores, virtual_cores
 # !! : device link
 # !! : device name
