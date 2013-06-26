@@ -43,6 +43,7 @@ PROGS               = cpu_freq               \
                       kernel_version         \
                       mem_size               \
                       phys_cores             \
+                      system_name            \
                       swap_size              \
                       virtual_cores
 
@@ -104,6 +105,7 @@ kernel_version.cmo  : params.cmo
 mem_size.cmo        : params.cmo
 phys_cores.cmo      : params.cmo
 swap_size.cmo       : params.cmo
+system_name.cmo     : 
 virtual_cores.cmo   : params.cmo
 
 get_field.cmo       : params.cmo

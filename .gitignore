@@ -16,5 +16,6 @@ hyperthreading
 kernel_version
 mem_size
 phys_cores
+system_name
 swap_size
 virtual_cores
