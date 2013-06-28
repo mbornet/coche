@@ -5,9 +5,10 @@
 #============================================================================
 #
 #	Targets :
-#		all		: make all programs
-#		clean	: remove objects, interfaces and programs
-#		checks	: run some tests
+#		all		     : make all programs
+#		clean	     : remove objects, interfaces and programs
+#		clean_objs	: remove objects, interfaces and programs
+#		checks	     : run some tests
 #
 #============================================================================
 
@@ -58,6 +59,9 @@ all                 : $(ALL)
 
 clean               :
 				@ rm -f *.cmo *.cmi $(PROGS)
+
+clean_objs          :
+				@ rm -f *.cmo *.cmi
 
 checks              : $(PROGS)
 				@ echo "================ CHECKS ================"
