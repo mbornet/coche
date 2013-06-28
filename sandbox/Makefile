@@ -7,7 +7,7 @@
 #	Targets :
 #		all		     : make all programs
 #		clean	     : remove objects, interfaces and programs
-#		clean_objs	: remove objects, interfaces and programs
+#		clean_objs	: remove objects, interfaces, keep programs
 #		checks	     : run some tests
 #
 #============================================================================
