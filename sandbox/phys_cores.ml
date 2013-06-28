@@ -11,4 +11,3 @@ let nb_cpu_slots         = Params.count_uniq param_cpu_slots  file_cpuinfo  in
 let nb_phys_cores        = nb_cores_per_cpu * nb_cpu_slots in
      printf "%d\n" nb_phys_cores ;
 
-exit 0

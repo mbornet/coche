@@ -23,4 +23,3 @@ let ht_status =
      "UNKNOWN"
      in printf "%s\n" ht_status ;
 
-exit 0
