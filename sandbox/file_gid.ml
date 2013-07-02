@@ -1,16 +1,19 @@
 
-open Unix ;;
-open Printf ;;
+open Unix
+open Printf
 
-let print_gid file =
-     if Sys.file_exists file then
-          let gid = Unix.stat file in
-               printf "%d\n" gid.st_gid 
-     else
-          eprintf "\"%s\" : no such file or directory\n" file ;;
+let gid file =
+  if Sys.file_exists file then
+    let gid_st = Unix.stat file in
+      gid_st.st_gid
+  else
+    raise Not_found
 
-let nb_files = Array.length Sys.argv - 1 in
-     if nb_files > 0 then
-          print_gid Sys.argv.(1)
-     else
-          eprintf "Usage: %s pathname\n" Sys.argv.(0) ;;
+let _ = let nb_files = Array.length Sys.argv - 1 in
+  if nb_files > 0 then
+    let file = Sys.argv.(1) in
+    try
+        printf "%d\n" (gid file)
+    with Not_found -> eprintf "\"%s\" : no such file or directory\n" file
+  else
+    eprintf "Usage: %s pathname\n" Sys.argv.(0)
