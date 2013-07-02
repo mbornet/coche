@@ -2,20 +2,19 @@
 open Unix
 open Printf
 
-let print_group file =
+let group file =
   if Sys.file_exists file then
-    begin
-      let gid_st = Unix.stat file in
-      try
+    let gid_st = Unix.stat file in
         let gr = getgrgid gid_st.st_gid in
-          printf "%s\n" gr.gr_name
-        with Not_found -> eprintf "ERROR: GID %d not found !\n" gid_st.st_gid;
-      end
-    else
-      eprintf "\"%s\" : no such file or directory\n" file ;;
+          gr.gr_name
+  else
+    raise Not_found
 
-let nb_files = Array.length Sys.argv - 1 in
+let _ = let nb_files = Array.length Sys.argv - 1 in
   if nb_files > 0 then
-    print_group Sys.argv.(1)
+    let file = Sys.argv.(1) in
+    try
+      printf "%s\n" (group file)
+    with Not_found -> eprintf "ERROR: \"%s\" not found !\n" file
   else
     eprintf "Usage: %s pathname\n" Sys.argv.(0)
