@@ -71,26 +71,32 @@ checks              : $(PROGS)
 				@ ./hyperthreading
 				@ ./phys_cores
 				@ ./virtual_cores
+	      @ echo
 				@ ./file_uid
 				@ ./file_uid   /toto
 				@ ./file_uid   /etc
 				@ ./file_uid   /etc/hosts
+	      @ echo
 				@ ./file_gid 
 				@ ./file_gid   /toto
 				@ ./file_gid   /etc
 				@ ./file_gid   /etc/hosts
+	      @ echo
 				@ ./file_mode
 				@ ./file_mode  /toto
 				@ ./file_mode  /etc
 				@ ./file_mode  /etc/hosts
+	      @ echo
 				@ ./file_user
 				@ ./file_user  /toto
 				@ ./file_user  /etc
 				@ ./file_user  /etc/hosts
+	      @ echo
 				@ ./file_group 
 				@ ./file_group /toto
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
+	      @ echo
 				@ ./kernel_version
 
 params.cmo          : lists.cmo
