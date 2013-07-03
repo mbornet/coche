@@ -12,6 +12,7 @@ file_user
 get_field
 get_param_value
 grep_first
+hostname
 hyperthreading
 kernel_version
 mem_size
