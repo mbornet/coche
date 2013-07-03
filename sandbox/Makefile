@@ -40,6 +40,7 @@ PROGS               = cpu_freq               \
                       get_field              \
                       get_param_value        \
                       grep_first             \
+                      hostname               \
                       hyperthreading         \
                       kernel_version         \
                       mem_size               \
@@ -110,6 +111,7 @@ file_uid.cmo        : params.cmo
 file_user.cmo       : params.cmo
 get_param_value.cmo : params.cmo
 grep_first.cmo      : params.cmo
+hostname.cmo        : 
 hyperthreading.cmo  : params.cmo
 kernel_version.cmo  : params.cmo
 mem_size.cmo        : params.cmo
