@@ -1,11 +1,10 @@
 
-open Unix
 open Printf
 
 let gid file =
   if Sys.file_exists file then
     let gid_st = Unix.stat file in
-      gid_st.st_gid
+      gid_st.Unix.st_gid
   else
     raise Not_found
 

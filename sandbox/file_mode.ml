@@ -1,11 +1,10 @@
 
-open Unix
 open Printf
 
 let mode file =
   if Sys.file_exists file then
     let mode = Unix.stat Sys.argv.(1) in
-     mode.st_perm
+     mode.Unix.st_perm
   else
     raise Not_found
 

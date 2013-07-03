@@ -1,11 +1,10 @@
 
-open Unix
 open Printf
 
 let uid file =
   if Sys.file_exists file then
     let uid = Unix.stat file in
-      uid.st_uid 
+      uid.Unix.st_uid
     else
       raise Not_found
 

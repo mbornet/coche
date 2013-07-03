@@ -1,12 +1,11 @@
 
-open Unix
 open Printf
 
 let group file =
   if Sys.file_exists file then
     let gid_st = Unix.stat file in
-      let gr = getgrgid gid_st.st_gid in
-        gr.gr_name
+      let gr = Unix.getgrgid gid_st.Unix.st_gid in
+        gr.Unix.gr_name
   else
     raise Not_found
 

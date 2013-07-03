@@ -1,12 +1,11 @@
 
-open Unix ;;
-open Printf ;;
+open Printf
 
 let user file =
   if Sys.file_exists file then
     let uid_st = Unix.stat file in
-      let pw = getpwuid uid_st.st_uid in
-        pw.pw_name
+      let pw = Unix.getpwuid uid_st.Unix.st_uid in
+        pw.Unix.pw_name
   else
     raise Not_found
 
