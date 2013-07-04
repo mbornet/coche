@@ -20,4 +20,5 @@ mem_size
 phys_cores
 system_name
 swap_size
+units
 virtual_cores
