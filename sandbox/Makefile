@@ -59,6 +59,10 @@ OBJS                = lists.cmo              \
 
 all                 : $(ALL)
 
+help								: usage
+usage								:
+				@ echo "Usage: make [usage|all|clean|clean_objs|checks]"
+
 clean               :
 				@ rm -f *.cmo *.cmi $(PROGS)
 
