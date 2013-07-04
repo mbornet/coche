@@ -42,6 +42,7 @@ PROGS               = cpu_freq               \
                       grep_first             \
                       hostname               \
                       hyperthreading         \
+                      ip                     \
                       kernel_version         \
                       mem_size               \
                       phys_cores             \
@@ -113,6 +114,7 @@ get_param_value.cmo : params.cmo
 grep_first.cmo      : params.cmo
 hostname.cmo        : 
 hyperthreading.cmo  : params.cmo
+ip                  : params.cmo
 kernel_version.cmo  : params.cmo
 mem_size.cmo        : params.cmo
 phys_cores.cmo      : params.cmo
