@@ -17,6 +17,7 @@ hyperthreading
 ip
 kernel_version
 mem_size
+mount
 phys_cores
 system_name
 swap_size
