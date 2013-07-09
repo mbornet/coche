@@ -44,6 +44,7 @@ PROGS               = cpu_freq               \
                       hyperthreading         \
                       ip                     \
                       kernel_version         \
+                      make_list              \
                       mem_size               \
                       mount                  \
                       phys_cores             \
@@ -121,6 +122,7 @@ hostname.cmo        :
 hyperthreading.cmo  : params.cmo
 ip                  : params.cmo
 kernel_version.cmo  : params.cmo
+make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
 mount.cmo           :
 phys_cores.cmo      : params.cmo

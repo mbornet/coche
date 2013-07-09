@@ -13,6 +13,12 @@ let get_last l =
      let lg = List.length l in
      List.nth l (lg - 1)
 
-let rec print_list l = match l with
+let rec print_str_list l = match l with
      | [] -> printf "\n"
-     | head::tail -> printf "%s " head ; print_list tail
+     | head::tail -> printf "%s " head ; print_str_list tail
+
+let rec print_int_list l = match l with
+     | [] -> printf "\n"
+     | head::tail -> printf "%d " head ; print_int_list tail
+
+let print_list = print_str_list

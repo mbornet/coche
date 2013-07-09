@@ -16,6 +16,7 @@ hostname
 hyperthreading
 ip
 kernel_version
+make_list
 mem_size
 mount
 phys_cores
