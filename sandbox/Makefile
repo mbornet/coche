@@ -13,7 +13,11 @@
 #============================================================================
 
 #============================================================================
-%.cmo               : %.ml
+%.cmo               : %.ml %.cmi
+				@ echo "$@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+%.cmi               : %.mli
 				@ echo "$@"
 				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
@@ -124,7 +128,7 @@ ip                  : params.cmo
 kernel_version.cmo  : params.cmo
 make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
-mount.cmo           :
+mount.cmo           : lists.cmo
 phys_cores.cmo      : params.cmo
 swap_size.cmo       : params.cmo
 system_name.cmo     : 
