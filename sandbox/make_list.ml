@@ -7,4 +7,4 @@ let rec mk_list n =
 
 
 let _ = let l = mk_list 10 in
-  Lists.print_int_list l ;;
+  Lists.print_int_list l
