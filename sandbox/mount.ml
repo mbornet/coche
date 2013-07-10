@@ -17,12 +17,12 @@ let rec chan_to_list chan =
   try
     let line = input_line chan in
       line :: chan_to_list chan
-  with End_of_file -> [] ;;
+  with End_of_file -> []
 
 let run_proc_to_list cmd =
   let chan = Unix.open_process_in cmd in
     let res = chan_to_list chan in
-      let _ = Unix.close_process_in chan in res ;;
+      let _ = Unix.close_process_in chan in res
 
 let _ = let result = run_proc_to_list "/bin/mount" in
   Lists.print_str_list_nl result
