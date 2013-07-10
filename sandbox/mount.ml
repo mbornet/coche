@@ -24,6 +24,8 @@ let run_proc_to_list cmd =
     let res = chan_to_list chan in
       let _ = Unix.close_process_in chan in res ;;
 
-let result = run_proc_to_list "mount" in
+let _ = let result = run_proc_to_list "/bin/mount" in
   Lists.print_str_list_nl result
 
+let _ = let result = run_proc_to_list "/bin/mount" in
+  Lists.print_num_str_list_nl result 1
