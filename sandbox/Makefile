@@ -111,7 +111,7 @@ checks              : $(PROGS)
 				@ echo
 				@ ./kernel_version
 
-params.cmo          : lists.cmo
+params.cmo          : params.cmi lists.cmo
 
 cpu_freq.cmo        : params.cmo
 cpu_max_freq.cmo    : params.cmo
