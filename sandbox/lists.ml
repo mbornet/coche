@@ -21,6 +21,10 @@ let rec print_str_list_nl l = match l with
      | [] -> printf "\n"
      | head::tail -> printf "%s\n" head ; print_str_list_nl tail
 
+let rec print_num_str_list_nl l n = match l with
+     | [] -> printf "\n"
+     | head::tail -> printf "%5d %s\n" n head ; print_num_str_list_nl tail (n + 1) ;;
+
 let rec print_int_list l = match l with
      | [] -> printf "\n"
      | head::tail -> printf "%d " head ; print_int_list tail

@@ -126,6 +126,7 @@ hostname.cmo        :
 hyperthreading.cmo  : params.cmo
 ip                  : params.cmo
 kernel_version.cmo  : params.cmo
+lists.cmo           : lists.cmi
 make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
 mount.cmo           : lists.cmo
