@@ -36,11 +36,11 @@ let _ = let result = run_proc_to_list "/bin/mount" in
 let _ = let result = run_proc_to_list "/bin/mount" in
   Lists.print_num_str_list_nl result 1
 
-let param_name = "/dev/sda1"
+let param_name = "/dev/sdc1"
 
 let s =
   let regcomp = Str.regexp ( "^" ^ param_name ^ "[ \t]") in
-    with_proc "/bin/mount" Params.search_param_last_chan regcomp
+    with_proc "/bin/mount" Params.search_param_last_field_chan regcomp
 
 let _ = printf "%s\n" s
 

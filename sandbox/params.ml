@@ -4,20 +4,28 @@ open Printf
 let regcomp = Str.regexp "<VOID>"
 
 (* Extract the first field of the parameter value *)
-let extract_value l =
-     let parts       = Str.split (Str.regexp ":") l in
+let extract_value line =
+     let parts       = Str.split (Str.regexp ":") line in
      let values      = Lists.left_shift parts in
      let value       = Lists.get_first values in
      let qty         = Str.split (Str.regexp "[ \t]+") value in
      let param_value = Lists.get_first qty in
      param_value
 
-let extract_last_value l =
-     let parts       = Str.split (Str.regexp ":") l in
+let extract_last_value line =
+begin
+  printf "extract_last_value: line = [%s]\n" line;
+     let parts       = Str.split (Str.regexp ":") line in
      let values      = Lists.left_shift parts in
      let value       = Lists.get_first values in
      let qty         = Str.split (Str.regexp "[ \t]+") value in
      let param_value = Lists.get_last qty in
+     param_value
+end
+
+let extract_last_field line =
+     let fields      = Str.split (Str.regexp "[ \t]+") line in
+     let param_value = Lists.get_last fields in
      param_value
 
 (* Search for the parameter in the file associated to "chan" an return its value *)
@@ -30,10 +38,20 @@ let rec search_param_chan chan regcomp =
 
 let rec search_param_last_chan chan regcomp =
      try let line = input_line chan in
+        begin
+          printf "search_param_last_chan: line = [%s]\n" line;
           try let _ = Str.search_forward regcomp line 0 in
                extract_last_value line
           with Not_found -> search_param_last_chan chan regcomp
-     with End_of_file -> ""
+        end
+     with End_of_file -> raise Not_found ;;
+
+let rec search_param_last_field_chan chan regcomp =
+     try let line = input_line chan in
+          try let _ = Str.search_forward regcomp line 0 in
+               extract_last_field line
+          with Not_found -> search_param_last_field_chan chan regcomp
+     with End_of_file -> raise Not_found
 
 (* Count the number of occurences of the specified regular experience *)
 let rec count_param_chan chan regcomp =
