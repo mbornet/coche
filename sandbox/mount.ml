@@ -68,5 +68,5 @@ let s device_name =
     with_proc "/bin/mount" set_mount_attr regcomp
 
 let _ = let m = s "/dev/sda1" in
-    printf "%s %s\n" m.dev_st m.mount_point_st
+    printf "%s %s %s %s\n" m.dev_st m.mount_point_st m.fs_type_st m.options_st
 
