@@ -30,11 +30,13 @@ let with_proc cmd fct regcomp =
       Unix.close_process_in chan; res
     with e -> Unix.close_process_in chan; raise e ;;
 
+(*
 let _ = let result = run_proc_to_list "/bin/mount" in
   Lists.print_str_list_nl result
 
 let _ = let result = run_proc_to_list "/bin/mount" in
   Lists.print_num_str_list_nl result 1
+*)
 
 
 (* field numbers of the attributes of a device mount *)
