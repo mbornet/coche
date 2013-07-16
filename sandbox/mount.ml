@@ -33,9 +33,15 @@ let rec set_mount_attr chan regcomp =
     with Not_found -> set_mount_attr chan regcomp
   with End_of_file -> raise Not_found
 
+let with_proc cmd fct regcomp =
+  let chan = Unix.open_process_in cmd in
+    try let res = fct chan regcomp in
+      Unix.close_process_in chan; res
+    with e -> Unix.close_process_in chan; raise e
+
 let get_mount_infos device_name =
   let regcomp = Str.regexp ( "^" ^ device_name ^ "[ \t]") in
-    Proc.with_proc mount_cmd set_mount_attr regcomp
+    with_proc mount_cmd set_mount_attr regcomp
 
 let print_mount_infos device = let m = get_mount_infos device in
     printf "%s %s %s %s\n" m.dev_st m.mount_point_st m.fs_type_st m.options_st

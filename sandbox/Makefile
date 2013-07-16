@@ -130,7 +130,7 @@ kernel_version.cmo  : params.cmo
 lists.cmo           : lists.cmi
 make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
-mount.cmo           : mount.cmi params.cmo lists.cmo proc.cmo
+mount.cmo           : mount.cmi params.cmo lists.cmo
 phys_cores.cmo      : params.cmo
 proc.cmo            :
 swap_size.cmo       : params.cmo
