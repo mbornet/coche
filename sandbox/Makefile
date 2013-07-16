@@ -64,7 +64,7 @@ OBJS                = lists.cmo              \
 
 #============================================================================
 
-all                 : $(ALL)
+all                 : $(OBJS) $(ALL)
 
 help								: usage
 usage								:
@@ -112,7 +112,6 @@ checks              : $(PROGS)
 				@ echo
 				@ ./kernel_version
 
-params.cmo          : params.cmi lists.cmo
 
 cpu_freq.cmo        : params.cmo
 cpu_max_freq.cmo    : params.cmo
@@ -131,8 +130,9 @@ lists.cmo           : lists.cmi
 make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
 mount.cmo           : mount.cmi params.cmo lists.cmo
+params.cmo          : params.cmi lists.cmo
 phys_cores.cmo      : params.cmo
-proc.cmo            :
+proc.cmo            : proc.cmi
 swap_size.cmo       : params.cmo
 system_name.cmo     : 
 virtual_cores.cmo   : params.cmo
