@@ -13,6 +13,7 @@ let print_status status = match status with
   | U.WEXITED code -> if code <> 0 then printf "Process exited. Return code = %d\n" code
   | _ -> printf "False alarm\n"
 
+(*
 let rec chan_to_list chan =
   try
     let line = input_line chan in
@@ -23,21 +24,15 @@ let run_proc_to_list cmd =
   let chan = Unix.open_process_in cmd in
     let res = chan_to_list chan in
       let _ = Unix.close_process_in chan in res
+*)
 
 let with_proc cmd fct regcomp =
   let chan = Unix.open_process_in cmd in
     try let res = fct chan regcomp in
       Unix.close_process_in chan; res
-    with e -> Unix.close_process_in chan; raise e ;;
+    with e -> Unix.close_process_in chan; raise e
 
-(*
-let _ = let result = run_proc_to_list "/bin/mount" in
-  Lists.print_str_list_nl result
-
-let _ = let result = run_proc_to_list "/bin/mount" in
-  Lists.print_num_str_list_nl result 1
-*)
-
+let mount_cmd        = "/bin/mount"
 
 (* field numbers of the attributes of a device mount *)
 let mount_dev_idx         = 1 - 1
@@ -63,10 +58,16 @@ let rec set_mount_attr chan regcomp =
     with Not_found -> set_mount_attr chan regcomp
   with End_of_file -> raise Not_found
 
-let s device_name =
+let get_mount_infos device_name =
   let regcomp = Str.regexp ( "^" ^ device_name ^ "[ \t]") in
-    with_proc "/bin/mount" set_mount_attr regcomp
+    with_proc mount_cmd set_mount_attr regcomp
 
-let _ = let m = s "/dev/sda1" in
+let print_mount_infos device = let m = get_mount_infos device in
     printf "%s %s %s %s\n" m.dev_st m.mount_point_st m.fs_type_st m.options_st
 
+let _ = let nb_args = Array.length Sys.argv - 1 in
+  if nb_args > 0 then
+    let device = Sys.argv.(1) in
+      print_mount_infos device
+  else
+    eprintf "Usage: %s device_name\n" Sys.argv.(0)
