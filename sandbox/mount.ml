@@ -36,8 +36,8 @@ let rec set_mount_attr chan regcomp =
 let with_proc cmd fct regcomp =
   let chan = Unix.open_process_in cmd in
     try let res = fct chan regcomp in
-      Unix.close_process_in chan; res
-    with e -> Unix.close_process_in chan; raise e
+      ignore (Unix.close_process_in chan); res
+    with e -> ignore (Unix.close_process_in chan); raise e
 
 let get_mount_infos device_name =
   let regcomp = Str.regexp ( "^" ^ device_name ^ "[ \t]") in

@@ -10,6 +10,6 @@ let print_status status = match status with
 let with_proc cmd fct regcomp =
   let chan = Unix.open_process_in cmd in
     try let res = fct chan regcomp in
-      Unix.close_process_in chan; res
-    with e -> Unix.close_process_in chan; raise e
+      ignore (Unix.close_process_in chan); res
+    with e -> ignore (Unix.close_process_in chan); raise e
 
