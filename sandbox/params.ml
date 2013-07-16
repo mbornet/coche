@@ -14,7 +14,6 @@ let extract_value line =
 
 let extract_last_value line =
 begin
-  printf "extract_last_value: line = [%s]\n" line;
      let parts       = Str.split (Str.regexp ":") line in
      let values      = Lists.left_shift parts in
      let value       = Lists.get_first values in
@@ -39,7 +38,6 @@ let rec search_param_chan chan regcomp =
 let rec search_param_last_chan chan regcomp =
      try let line = input_line chan in
         begin
-          printf "search_param_last_chan: line = [%s]\n" line;
           try let _ = Str.search_forward regcomp line 0 in
                extract_last_value line
           with Not_found -> search_param_last_chan chan regcomp
