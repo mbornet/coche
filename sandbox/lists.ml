@@ -30,3 +30,16 @@ let get_last l =
      let lg = List.length l in
       List.nth l (lg - 1)
 
+(*
+let rec chan_to_list chan =
+  try
+    let line = input_line chan in
+      line :: chan_to_list chan
+  with End_of_file -> []
+
+let run_proc_to_list cmd =
+  let chan = Unix.open_process_in cmd in
+    let res = chan_to_list chan in
+      let _ = Unix.close_process_in chan in res
+*)
+
