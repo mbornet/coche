@@ -125,7 +125,7 @@ get_param_value.cmo : params.cmo
 grep_first.cmo      : params.cmo
 hostname.cmo        : 
 hyperthreading.cmo  : params.cmo
-ip                  : params.cmo
+ip.cmo              : params.cmo
 kernel_version.cmo  : params.cmo
 lists.cmo           : lists.cmi
 make_list.cmo       : params.cmo
