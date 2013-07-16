@@ -59,7 +59,8 @@ PROGS               = cpu_freq               \
 ALL                 = $(PROGS)
 
 OBJS                = lists.cmo              \
-                      params.cmo
+                      params.cmo             \
+                      proc.cmo
 
 #============================================================================
 
@@ -129,8 +130,9 @@ kernel_version.cmo  : params.cmo
 lists.cmo           : lists.cmi
 make_list.cmo       : params.cmo
 mem_size.cmo        : params.cmo
-mount.cmo           : mount.cmi params.cmo lists.cmo
+mount.cmo           : mount.cmi params.cmo lists.cmo proc.cmo
 phys_cores.cmo      : params.cmo
+proc.cmo            :
 swap_size.cmo       : params.cmo
 system_name.cmo     : 
 virtual_cores.cmo   : params.cmo
