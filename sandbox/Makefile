@@ -110,6 +110,8 @@ checks              : $(PROGS)
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
 				@ echo
+				@ ./ip
+				@ echo
 				@ ./kernel_version
 
 
