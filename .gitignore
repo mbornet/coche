@@ -2,6 +2,7 @@
 *.cmo
 *.cmi
 *.swp
+bcast
 cpu_freq
 cpu_max_freq
 file_gid
@@ -16,7 +17,10 @@ hostname
 hyperthreading
 ip
 kernel_version
+mac
 make_list
+mask
+match
 mem_size
 mount
 phys_cores

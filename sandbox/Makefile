@@ -34,7 +34,8 @@ LIBS_CMA            = str.cma                \
 
 INTERFACES          = get_param_value.cmi
 
-PROGS               = cpu_freq               \
+PROGS               = bcast                  \
+                      cpu_freq               \
                       cpu_max_freq           \
                       file_gid               \
                       file_group             \
@@ -48,7 +49,10 @@ PROGS               = cpu_freq               \
                       hyperthreading         \
                       ip                     \
                       kernel_version         \
+                      mac                    \
                       make_list              \
+                      mask                   \
+                      match                  \
                       mem_size               \
                       mount                  \
                       phys_cores             \
@@ -113,8 +117,11 @@ checks              : $(PROGS)
 				@ ./ip
 				@ echo
 				@ ./kernel_version
+				@ echo
+				@ ./mac
 
 
+bcast.cmo           : params.cmo
 cpu_freq.cmo        : params.cmo
 cpu_max_freq.cmo    : params.cmo
 file_gid.cmo        : params.cmo
@@ -129,7 +136,10 @@ hyperthreading.cmo  : params.cmo
 ip.cmo              : params.cmo
 kernel_version.cmo  : params.cmo
 lists.cmo           : lists.cmi
+mac.cmo             : params.cmo
 make_list.cmo       : params.cmo
+mask.cmo            : params.cmo
+match.cmo           : params.cmo
 mem_size.cmo        : params.cmo
 mount.cmo           : mount.cmi params.cmo lists.cmo
 params.cmo          : params.cmi lists.cmo
