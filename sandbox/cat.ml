@@ -1,6 +1,6 @@
 
 (*
-let rec cat chan = 
+let rec cat chan =
      try let line = input_line chan in
           let _ = printf "%s\n" line; cat chan
      with End_of_file -> ()

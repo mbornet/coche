@@ -18,7 +18,7 @@ let with_cmd cmd fct regcomp  =
     with e -> ignore (Unix.close_process_in chan); raise e
 
 let get_bcast_addr () = let regcomp = Str.regexp ("^.*[ \t]+Bcast:") in
-  with_cmd ip_cmd Params.search_param_chan regcomp ;;
+  with_cmd ip_cmd Params.get_RE_param_chan regcomp ;;
 
 let bcast_addr = get_bcast_addr () in
     printf "%s\n" bcast_addr

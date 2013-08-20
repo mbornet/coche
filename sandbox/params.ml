@@ -108,7 +108,7 @@ let count param_name file =
 let count_uniq param_name file =
      let regcomp = mk_re_param param_name in
           with_file file count_uniq_chan regcomp
-     
+
 let field field_no file =
      with_file file get_field_chan field_no
 
@@ -116,12 +116,12 @@ let last_field param_name file =
      let regcomp = mk_re_param param_name in
           with_file file search_param_last_chan regcomp
 
-let get_RE_param regcomp line = 
+let get_RE_param regcomp line =
   try let _ = Str.search_forward regcomp line 0 in
     Str.matched_group 1 line
   with Not_found -> raise Not_found
 
-let rec get_RE_param_chan chan regcomp = 
+let rec get_RE_param_chan chan regcomp =
   try let line = input_line chan in
     try let _ = Str.search_forward regcomp line 0 in
       get_RE_param regcomp line
