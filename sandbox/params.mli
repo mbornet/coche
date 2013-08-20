@@ -21,3 +21,5 @@ val count_uniq                   : string -> string -> int
 val field                        : int -> string -> string
 val last_field                   : string -> string -> string
 
+val get_RE_param_chan            : in_channel -> Str.regexp -> string
+val get_RE_param                 : Str.regexp -> string -> string

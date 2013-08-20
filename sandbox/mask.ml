@@ -1,17 +1,19 @@
 
 open Printf
 
-let get_RE_param regcomp line = 
+(*
+let get_RE_param regcomp line =
   try let _ = Str.search_forward regcomp line 0 in
     Str.matched_group 1 line
-  with Not_found -> "##########"
+  with Not_found -> raise Not_found
 
-let rec get_RE_param_chan chan regcomp = 
+let rec get_RE_param_chan chan regcomp =
   try let line = input_line chan in
     try let _ = Str.search_forward regcomp line 0 in
       get_RE_param regcomp line
     with Not_found -> get_RE_param_chan chan regcomp
   with End_of_file -> raise Not_found
+*)
 
 type ip_st =
   {
@@ -31,7 +33,7 @@ let with_cmd cmd fct regcomp  =
 
 let get_mask_addr () =
   let regcomp = Str.regexp "^.*[ \t]+Mask:\\([1-9][0-9.]+\\)" in
-    with_cmd ip_cmd get_RE_param_chan regcomp ;;
+    with_cmd ip_cmd Params.get_RE_param_chan regcomp ;;
 
 let mask_addr = get_mask_addr () in
     printf "%s\n" mask_addr
