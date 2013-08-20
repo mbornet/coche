@@ -12,6 +12,7 @@ type ip_st =
 *)
 
 let ip_cmd = "/sbin/ifconfig eth0"
+let regex  = "^.*[ \t]+Mask:\\([1-9][0-9.]+\\)"
 
 let with_cmd cmd fct regcomp  =
   let chan = Unix.open_process_in cmd in
@@ -20,7 +21,7 @@ let with_cmd cmd fct regcomp  =
     with e -> ignore (Unix.close_process_in chan); raise e
 
 let get_mask_addr () =
-  let regcomp = Str.regexp "^.*[ \t]+Mask:\\([1-9][0-9.]+\\)" in
+  let regcomp = Str.regexp regex in
     with_cmd ip_cmd Params.get_RE_param_chan regcomp ;;
 
 let mask_addr = get_mask_addr () in
