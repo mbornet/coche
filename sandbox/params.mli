@@ -23,3 +23,5 @@ val last_field                   : string -> string -> string
 
 val get_RE_param_chan            : in_channel -> Str.regexp -> string
 val get_RE_param                 : Str.regexp -> string -> string
+
+val with_cmd                     : string -> (in_channel -> 'a -> 'b) -> 'a -> 'b

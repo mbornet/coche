@@ -128,3 +128,9 @@ let rec get_RE_param_chan chan regcomp =
     with Not_found -> get_RE_param_chan chan regcomp
   with End_of_file -> raise Not_found
 
+let with_cmd cmd fct regcomp  =
+  let chan = Unix.open_process_in cmd in
+    try let res = fct chan regcomp in
+       ignore (Unix.close_process_in chan); res
+    with e -> ignore (Unix.close_process_in chan); raise e
+

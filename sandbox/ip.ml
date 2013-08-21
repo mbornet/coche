@@ -10,15 +10,10 @@ type ip_st =
     state_st      : string }
 
 let ip_cmd = "/sbin/ifconfig eth0"
+let regex  = "^[ \t]+inet addr:\\([1-9][0-9.]+\\)"
 
-let with_cmd cmd fct regcomp  =
-  let chan = Unix.open_process_in cmd in
-    try let res = fct chan regcomp in
-       ignore (Unix.close_process_in chan); res
-    with e -> ignore (Unix.close_process_in chan); raise e
-
-let get_ip_addr () = let regcomp = Str.regexp ("^[ \t]+inet addr:") in
-  with_cmd ip_cmd Params.search_param_chan regcomp ;;
+let get_ip_addr () = let regcomp = Str.regexp regex in
+  Params.with_cmd ip_cmd Params.get_RE_param_chan regcomp ;;
 
 let ip_addr = get_ip_addr () in
     printf "%s\n" ip_addr
