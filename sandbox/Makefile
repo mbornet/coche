@@ -114,11 +114,15 @@ checks              : $(PROGS)
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
 				@ echo
-				@ ./ip
-				@ echo
 				@ ./kernel_version
 				@ echo
 				@ ./mac
+				@ echo
+				@ ./ip
+				@ echo
+				@ ./bcast
+				@ echo
+				@ ./mask
 
 
 bcast.cmo           : params.cmo
