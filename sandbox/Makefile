@@ -56,6 +56,7 @@ PROGS               = bcast                  \
                       mem_size               \
                       mount                  \
                       phys_cores             \
+                      pkglist                \
                       system_name            \
                       swap_size              \
                       virtual_cores
@@ -144,6 +145,7 @@ mem_size.cmo        : params.cmo
 mount.cmo           : mount.cmi params.cmo lists.cmo
 params.cmo          : params.cmi lists.cmo
 phys_cores.cmo      : params.cmo
+pkglist.cmo         :
 proc.cmo            : proc.cmi
 swap_size.cmo       : params.cmo
 system_name.cmo     : 
