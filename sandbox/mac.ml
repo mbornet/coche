@@ -11,7 +11,10 @@ type ip_st =
     state_st      : string }
 *)
 
-let ip_cmd = "/sbin/ifconfig eth0"
+(* let iface  = "eth0" *)
+let iface  = "eth1"
+let ip_cmd = "/sbin/ifconfig" ^ " " ^ iface
+
 let regex  = "^.*[ \t]+HWaddr \\([0-9a-fA-F:]+\\)"
 
 let get_mac_addr () =

@@ -115,9 +115,13 @@ checks              : $(PROGS)
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
 				@ echo
+				@ ./kernel_version
+				@ echo
 				@ ./ip
 				@ echo
-				@ ./kernel_version
+				@ ./bcast
+				@ echo
+				@ ./mask
 				@ echo
 				@ ./mac
 

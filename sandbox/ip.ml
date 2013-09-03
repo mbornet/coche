@@ -1,6 +1,7 @@
 
 open Printf
 
+(*
 type ip_st =
   {
     ip_st         : string;
@@ -8,8 +9,12 @@ type ip_st =
     netmask_st    : string;
     mac_st        : string;
     state_st      : string }
+*)
 
-let ip_cmd = "/sbin/ifconfig eth0"
+(* let iface  = "eth0" *)
+let iface  = "eth1"
+let ip_cmd = "/sbin/ifconfig" ^ " " ^ iface
+
 let regex  = "^[ \t]+inet addr:\\([1-9][0-9.]+\\)"
 
 let get_ip_addr () = let regcomp = Str.regexp regex in
