@@ -25,6 +25,7 @@ mem_size
 mount
 phys_cores
 pkg
+rec_list_copy
 system_name
 swap_size
 units
