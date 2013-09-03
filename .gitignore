@@ -24,6 +24,7 @@ match
 mem_size
 mount
 phys_cores
+pkg
 system_name
 swap_size
 units
