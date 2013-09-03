@@ -2,7 +2,7 @@
 #============================================================================
 %.cmo               : %.ml
 				@ echo "%.cmo : $@"
-				 $(OCAMLC) $(OCAML_OPTS) -c $<
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
 
 %.cmi               : %.mli
 				@ echo "%.cmi : $@"
@@ -10,7 +10,7 @@
 
 %                   : %.cmo
 				@ echo "%     : $@"
-				 $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
 
 #============================================================================
 OCAMLC              = ocamlc
