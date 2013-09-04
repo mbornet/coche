@@ -5,6 +5,7 @@
 bcast
 cpu_freq
 cpu_max_freq
+distrib
 file_gid
 file_group
 file_mode
