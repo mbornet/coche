@@ -11,7 +11,10 @@ type ip_st =
     state_st      : string }
 *)
 
-let ip_cmd = "/sbin/ifconfig eth0"
+(* let iface  = "eth0" *)
+let iface  = "eth1"
+let ip_cmd = "/sbin/ifconfig" ^ " " ^ iface
+
 let regex  = "^.*[ \t]+Bcast:\\([1-9][0-9.]+\\)"
 
 let get_bcast_addr () =

@@ -1,0 +1,36 @@
+
+#============================================================================
+%.cmo               : %.ml
+				@ echo "%.cmo : $@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+%.cmi               : %.mli
+				@ echo "%.cmi : $@"
+				@ $(OCAMLC) $(OCAML_OPTS) -c $<
+
+%                   : %.cmo
+				@ echo "%     : $@"
+				@ $(OCAMLC) $(OCAML_OPTS) -o $@ $(LIBS_CMA) $(OBJS) $<
+
+#============================================================================
+OCAMLC              = ocamlc
+OCAML_OPTS          = 
+
+LIBS_CMA            = str.cma                \
+                      unix.cma
+
+#INTERFACES          = get_param_value.cmi
+
+PROGS               = rec_list_copy
+
+ALL                 = $(PROGS)
+
+OBJS                = lists.cmo              \
+                      params.cmo             \
+                      proc.cmo
+
+#============================================================================
+
+all                 : $(OBJS) $(ALL)
+
+rec_list_copy.cmo   : lists.cmo

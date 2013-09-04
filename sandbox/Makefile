@@ -56,6 +56,7 @@ PROGS               = bcast                  \
                       mem_size               \
                       mount                  \
                       phys_cores             \
+                      pkg                    \
                       pkglist                \
                       system_name            \
                       swap_size              \
@@ -117,13 +118,13 @@ checks              : $(PROGS)
 				@ echo
 				@ ./kernel_version
 				@ echo
-				@ ./mac
-				@ echo
 				@ ./ip
 				@ echo
 				@ ./bcast
 				@ echo
 				@ ./mask
+				@ echo
+				@ ./mac
 
 
 bcast.cmo           : params.cmo
@@ -149,6 +150,7 @@ mem_size.cmo        : params.cmo
 mount.cmo           : mount.cmi params.cmo lists.cmo
 params.cmo          : params.cmi lists.cmo
 phys_cores.cmo      : params.cmo
+pkg.cmo             : params.cmo
 pkglist.cmo         :
 proc.cmo            : proc.cmi
 swap_size.cmo       : params.cmo
