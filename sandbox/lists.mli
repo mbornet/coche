@@ -11,5 +11,6 @@ val print_str_list        : string list -> unit
 val print_str_list_nl     : string list -> unit
 val print_num_str_list_nl : string list -> int -> unit
 val print_int_list        : int list -> unit
+val print_int_list_nl     : int list -> unit
 
 val print_list            : string list -> unit

@@ -17,6 +17,10 @@ let rec print_int_list l = match l with
      | [] -> printf "\n"
      | head::tail -> printf "%d " head ; print_int_list tail
 
+let rec print_int_list_nl l = match l with
+     | [] -> printf "\n"
+     | head::tail -> printf "%d\n" head ; print_int_list tail
+
 let print_list = print_str_list
 let left_shift l = match l with
      | [] -> l
