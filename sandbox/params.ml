@@ -128,6 +128,15 @@ let rec get_RE_param_chan chan regcomp =
     with Not_found -> get_RE_param_chan chan regcomp
   with End_of_file -> raise Not_found
 
+(*
+let rec get_RE_list_chan chan regcomp =
+  try let line = input_line chan in
+    try let _ = Str.search_forward regcomp line 0 in
+      get_RE_param regcomp line
+    with Not_found -> get_RE_param_chan chan regcomp
+  with End_of_file -> raise Not_found
+*)
+
 let with_cmd cmd fct regcomp  =
   let chan = Unix.open_process_in cmd in
     try let res = fct chan regcomp in
