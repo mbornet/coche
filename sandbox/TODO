@@ -32,11 +32,11 @@
 # !! : netconfig classes
 # !! : netconfig name
 # !! : netconfig type (physical | virtual )  "physical" >
-# !! : network mask
+# OK : network mask
 # !! : network name
-# !! : pkgs list
+# OK : pkgs list
 # !! : quota size
 # !! : quota target (user | group ) "user">
 # !! : quota type (soft | hard ) "soft">
 # OK : system name  => system_name, hostname
-# !! : system type
+# OK : system type
