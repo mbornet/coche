@@ -60,6 +60,7 @@ PROGS               = bcast                  \
                       pkg                    \
                       pkglist                \
                       system_name            \
+                      system_type            \
                       swap_size              \
                       virtual_cores
 
@@ -157,6 +158,7 @@ pkglist.cmo         :
 proc.cmo            : proc.cmi
 swap_size.cmo       : params.cmo
 system_name.cmo     : 
+system_type.cmo     : params.cmo
 virtual_cores.cmo   : params.cmo
 
 get_field.cmo       : params.cmo

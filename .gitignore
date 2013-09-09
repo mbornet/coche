@@ -28,6 +28,7 @@ phys_cores
 pkg
 rec_list_copy
 system_name
+system_type
 swap_size
 units
 virtual_cores
