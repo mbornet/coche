@@ -37,6 +37,7 @@ INTERFACES          = get_param_value.cmi
 PROGS               = bcast                  \
                       cpu_freq               \
                       cpu_max_freq           \
+                      dev_size               \
                       distrib                \
                       file_gid               \
                       file_group             \
@@ -132,6 +133,7 @@ checks              : $(PROGS)
 bcast.cmo           : params.cmo
 cpu_freq.cmo        : params.cmo
 cpu_max_freq.cmo    : params.cmo
+dev_size.cmo        :
 distrib.cmo         : params.cmo
 file_gid.cmo        : params.cmo
 file_group.cmo      : params.cmo
