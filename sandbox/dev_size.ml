@@ -8,10 +8,6 @@ let device = "/dev/sda1"
 
 let df_cmd = "df -P"
 
-(*
-let regex  = "^" ^ device ^ "[ \t]+\\([1-9][0-9]*\\)"
-*)
-
 let get_dev_size device =
   let regex  = "^" ^ device ^ "[ \t]+\\([1-9][0-9]*\\)" in
     let regcomp = Str.regexp regex in
@@ -19,9 +15,3 @@ let get_dev_size device =
 
 let dev_size = get_dev_size device in
   printf "%s\n" dev_size
-
-(*
- let _ = printf "regex = \"%s\"\n" regex
-
- let get_dev_size device = 
- *)
