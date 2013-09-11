@@ -88,9 +88,14 @@ ETH                 = eth0
 
 checks              : $(PROGS)
 				@ echo "================ CHECKS ================"
+				@ ./hostname
+				@ ./system_name
+				@ ./system_type
+				@ ./kernel_version
 				@ ./mem_size
 				@ ./swap_size
 				@ ./cpu_freq
+				@ ./cpu_max_freq
 				@ ./hyperthreading
 				@ ./phys_cores
 				@ ./virtual_cores
