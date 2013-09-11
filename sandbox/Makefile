@@ -84,6 +84,8 @@ clean               :
 clean_objs          :
 				@ rm -f *.cmo *.cmi
 
+ETH                 = eth0
+
 checks              : $(PROGS)
 				@ echo "================ CHECKS ================"
 				@ ./mem_size
@@ -118,15 +120,12 @@ checks              : $(PROGS)
 				@ ./file_group /etc
 				@ ./file_group /etc/hosts
 				@ echo
-				@ ./kernel_version
+				@ ./ip $(ETH)
+				@ ./bcast $(ETH)
+				@ ./mask $(ETH)
+				@ ./mac $(ETH)
 				@ echo
-				@ ./ip
-				@ echo
-				@ ./bcast
-				@ echo
-				@ ./mask
-				@ echo
-				@ ./mac
+				@ ./dev_size /dev/sda1
 
 
 bcast.cmo           : params.cmo
