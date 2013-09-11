@@ -14,7 +14,8 @@ let regex  = "^ii[ \t]+\\([^ \t]+\\) .*"
 let rec stream_filter chan regcomp =
   try let line = input_line chan in
     try let _ = Str.search_forward regcomp line 0 in
-      Str.matched_group 1 line :: stream_filter chan regcomp
+      let pkgname = Str.matched_group 1 line in
+        pkgname :: stream_filter chan regcomp
     with Not_found -> stream_filter chan regcomp
   with End_of_file -> [] ;;
 
